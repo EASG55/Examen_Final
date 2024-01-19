@@ -16,7 +16,7 @@ export const Query = {
         return{
             nombre: contacto.nombre,
             numeroTelefono: contacto.numeroTelefono,
-            pais: pais_json.country,
+            pais: pais,
             hora: hora,
         }
 
