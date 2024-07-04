@@ -1,9 +1,9 @@
 import {ApolloServer, gql} from "@apollo/server";
 
 type Contact = {
-    _id: String;
+    id: String;
     nombre: String;
-    numeroTelefono: String;
+    telefono: String;
     pais: String;
     hora: String;
 }

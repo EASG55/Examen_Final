@@ -5,11 +5,10 @@ const Schema = mongoose.Schema;
 
 const contactSchema = new Schema({
     nombre: {type: String, required: true},
-    numeroTelefono: {type: String, required: true},
+    telefono: {type: String, required: true, unique: true},
     pais: {type: String},
-    hora: {type: String}
     
 })
 
-export type ContactModelType = mongoose.Document & Omit<Contact, "_id">;
+export type ContactModelType = mongoose.Document & Omit<Contact, "id">;
 export const ContactModel = mongoose.model<ContactModelType>("Contact", contactSchema);

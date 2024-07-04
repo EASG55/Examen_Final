@@ -2,7 +2,7 @@ export const typeDefs = `#graphql
 type Contact{
     id: ID!
     nombre: String!
-    numeroTelefono: String!
+    telefono: String!
     pais: String
     hora: String
 }
@@ -13,8 +13,8 @@ type Query{
 }
 
 type Mutation{
-    addContact(nombre: String!, numeroTelefono: String!): Contact!
-    deleteContact(id: ID!): Contact!
-    updateContact(id: ID!,nombre: String!, numeroTelefono: String!): Contact!
+    addContact(nombre: String!, telefono: String!): Contact!
+    deleteContact(id: ID!): Boolean!
+    updateContact(id: ID!,nombre: String!, telefono: String!): Contact!
 }
 `;
