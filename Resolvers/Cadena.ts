@@ -1,5 +1,5 @@
 
-import {ContactModelType,ContactModel} from "../db/contact.ts"
+import {ContactModelType,ContactModel} from "../db/Contact.ts"
 
 import { GraphQLError } from "graphql";
 
