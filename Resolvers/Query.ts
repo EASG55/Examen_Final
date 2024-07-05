@@ -1,6 +1,7 @@
 import {GraphQLError} from "graphql";
 import {ContactModelType, ContactModel} from "../db/Contact.ts";
-import hora_pais from "./get_hora.ts";
+import hora_pais from "../lib/get_hora.ts";
+import mongoose from "mongoose";
 
 export const Query = {
     getContact: async(_: unknown, args: {id: string}):Promise<ContactModelType> => {

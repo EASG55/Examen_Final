@@ -18,26 +18,29 @@ export const Mutation = {
            throw new GraphQLError(e);
        }
     },
-    addContact: async(_: unknown, args: {nombre: string, telefono: string}): Promise<ContactModelType> => {
-        try{
-            const {nombre, telefono} = args;
+    addContact:async (_:unknown,args:{nombre:string,telefono:string}):Promise<ContactModelType> => {
+   
 
-            const {pais,valid_telefono} = await check_telefono(telefono);
+            const {nombre,telefono} = args;
 
-            if(!valid_telefono) {throw new Error("Telefono no valido")}
+            const infoTelefono = await check_telefono(telefono);
 
-        const contactoCreado = new ContactModel({
-            nombre: nombre, 
-            telefono: telefono, 
-            pais: pais
-        });
+            const pais = infoTelefono.pais;
+            const valid_telefono = infoTelefono.valid_telefono;
 
-        await contactoCreado.save();
+            if(!valid_telefono){throw new Error("Telefono no valido")}
 
-        return contactoCreado;
-    }catch(e){
-            throw new GraphQLError(e);
-        }
+
+            const newContact = new ContactModel({
+                nombre:nombre,
+                telefono:telefono,
+                pais:pais
+            })
+
+            await newContact.save();
+
+            return newContact;
+
       
     },
     updateContact: async(_: unknown, args: {id: string, nombre: string, telefono: string}): Promise<ContactModelType> => {

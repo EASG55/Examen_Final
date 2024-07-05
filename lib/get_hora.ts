@@ -15,6 +15,7 @@ export const get_hora =async (pais:string):Promise<{hora:string}>  => {
     const capital_data = await fetch_capital.json();
 
     const capital = capital_data[0].capital;
+    
 
     console.log(capital);
 
@@ -22,15 +23,20 @@ export const get_hora =async (pais:string):Promise<{hora:string}>  => {
     
     const url_hora = `https://api.api-ninjas.com/v1/worldtime?city=${capital}`;
 
+    console.log(url_hora);
+    
     const fetch_hora = await fetch(url_hora,{headers:{'X-Api-Key':API_KEY}});
+
+    console.log(fetch_hora.status);
 
     if(fetch_hora.status !== 200) { throw new Error("Error con la api de hora")}
 
     const hora_data = await fetch_hora.json();
 
+    console.log(hora_data)
+
     const hora = hora_data.datetime;
 
-    console.log(hora)
 
     return hora;
 }

@@ -4,7 +4,7 @@ export const check_telefono =async (telefono:string):Promise<{pais:string,valid_
 
   if(!API_KEY){throw new Error("No API_KEY")}
 
-  const url = `https://api.api-ninjas.com/v1/validatephone?number=${telefono}`;
+  const url = "https://api.api-ninjas.com/v1/validatephone?number="+telefono;
 
   const fetch_telefono = await fetch(url,{headers:{'X-Api-Key':API_KEY}});
 
@@ -13,7 +13,8 @@ export const check_telefono =async (telefono:string):Promise<{pais:string,valid_
   const telefono_data = await fetch_telefono.json();
 
   return{
-      pais:telefono_data.country,
-      valid_telefono: telefono_data.is_valid
+      pais: telefono_data.country,
+      valid_telefono: telefono_data.is_valid,
+      timezone: telefono_data.timezones[1]
   }
 }
