@@ -27,7 +27,7 @@ try{
     }
   });
 
-  console.log("Server ready");
+  console.log("Server ready for use");
 
 }catch(err){
   console.log(err);
